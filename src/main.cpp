@@ -8,7 +8,7 @@ int main(int argc, char** argv) {
     noecho();
     curs_set(0);
 
-    init_game();
+    NCSnake::init();
 
     getchar();
 

@@ -2,16 +2,15 @@
 #include "snake.h"
 #include "sconsts.h"
 
-Snake::Snake(size_t len, int y, int x, int dir) {
-    head = new SnakePart(y, x, dir);
+Snake::Snake(WINDOW* win, size_t len, int y, int x, int dir) : win(win), len(len) {
+    head = new SnakePart(win, y, x, dir);
     tail = head;
-    for (unsigned i = 0; i < len; i++) {
-        SnakePart* new_part = new SnakePart(y + i, x, FOLLOW);
+    for (unsigned i = 0; i < len - 1; i++) {
+        SnakePart* new_part = new SnakePart(win, y + i, x, FOLLOW);
         tail->next = new_part;
         new_part->prev = tail;
         tail = new_part;
     }
-    this->len = len;
 }
 
 size_t Snake::length() {
@@ -20,7 +19,7 @@ size_t Snake::length() {
 
 void Snake::draw() {
     for (SnakePart* curr = head; curr != nullptr; curr = curr->next) {
-        mvaddch(curr->y, curr->x, SNAKE_CHAR);
+        mvwaddch(win, curr->y, curr->x, SNAKE_CHAR);
     }
 }
 
@@ -32,7 +31,7 @@ void Snake::move_draw() {
 
 
 void SnakePart::move_draw() {
-    if (!next) mvaddch(y, x, BACKGROUND_CHAR);
+    if (!next) mvwaddch(win, y, x, BACKGROUND_CHAR);
 
     switch (dir) {
         case UP:
@@ -55,5 +54,5 @@ void SnakePart::move_draw() {
             break;
     }
 
-    if (!prev) mvaddch(y, x, SNAKE_CHAR);
+    if (!prev) mvwaddch(win, y, x, SNAKE_CHAR);
 }

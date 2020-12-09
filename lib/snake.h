@@ -3,18 +3,20 @@
 
 #include <stdlib.h>
 #include <list>
+#include <ncurses.h>
 
 using namespace std;
 
 class SnakePart {
 public:
+    WINDOW* win;
     int y;
     int x;
     int dir;
     SnakePart* next;
     SnakePart* prev;
 
-    SnakePart(int y, int x, int dir) : y(y), x(x), dir(dir), next(nullptr), prev(nullptr) {};
+    SnakePart(WINDOW* win, int y, int x, int dir) : win(win), y(y), x(x), dir(dir), next(nullptr), prev(nullptr) {};
 
     // move this part
     void move_draw();
@@ -22,11 +24,12 @@ public:
 
 class Snake {
 private:
+    WINDOW* win;
     SnakePart* head;
     SnakePart* tail;
     size_t len;
 public:
-    Snake(size_t len, int y, int x, int dir);
+    Snake(WINDOW* win, size_t len, int y, int x, int dir);
 
     // length of the snake
     size_t length();
