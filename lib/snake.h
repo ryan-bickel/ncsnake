@@ -26,6 +26,7 @@ private:
 public:
     Snake(size_t len, int y, int x, int dir);
     size_t length();
+    void draw();
 };
 
 #endif

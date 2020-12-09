@@ -1,17 +1,10 @@
+#include "ncsnake.h"
+#include "snake.h"
+#include <list>
 #include <ncurses.h>
 
-int main(int argc, char** argv) {
-    initscr();
-    cbreak();
-    keypad(stdscr, true);
-    noecho();
-
-    int c = getchar();
-    addch(c);
+void init_game() {
+    Snake snake = Snake(3, 3, 3, UP);
+    snake.draw();
     refresh();
-
-    getchar();
-
-    endwin();
-    return 0;
 }
