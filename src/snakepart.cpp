@@ -13,6 +13,9 @@ void SnakePart::move_draw() {
         x--;
     } else if (dir == RIGHT) {
         x++;
+    } else if (dir == FOLLOW) {
+        x = prev->x;
+        y = prev->y;
     }
 
     if (!prev) mvaddch(y, x, SNAKE_CHAR);

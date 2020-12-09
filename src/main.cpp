@@ -6,6 +6,7 @@ int main(int argc, char** argv) {
     cbreak();
     keypad(stdscr, true);
     noecho();
+    curs_set(0);
 
     init_game();
 

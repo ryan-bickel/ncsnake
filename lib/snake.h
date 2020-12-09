@@ -24,6 +24,11 @@ public:
     // move the snake in its current direction then draw it
     void move_draw();
 
+    // change the direction the head of the snake is moving
+    void set_dir(int dir) {
+        head->dir = dir;
+    }
+
     static void operator delete(void* p) {
         Snake* s = (Snake*) p;
         SnakePart* curr = s->head;
