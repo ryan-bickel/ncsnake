@@ -3,30 +3,30 @@
 
 #include <stdlib.h>
 #include <list>
+#include "snakepart.h"
 
 using namespace std;
 
-#define UP    0
-#define DOWN  1
-#define LEFT  2
-#define RIGHT 3
-
 class Snake {
 private:
-    class SnakePart {
-    public:
-        int y;
-        int x;
-        int dir;
-        SnakePart(int y, int x, int dir) : y(y), x(x), dir(dir) {};
-        int move(int dir);
-    };
-
     list<SnakePart> parts;
+
+    // is this SnakePart the tail? 
+    bool is_tail(list<SnakePart>::iterator part);
+
+    // get the next SnakePart towards the tail
+    list<SnakePart>::iterator next(list<SnakePart>::iterator part);
 public:
     Snake(size_t len, int y, int x, int dir);
+
+    // length of the snake
     size_t length();
+
+    // draw the snake
     void draw();
+
+    // move the snake in its current direction then draw it
+    void move_draw();
 };
 
 #endif
