@@ -26,10 +26,5 @@ void Snake::move_draw() {
 }
 
 bool Snake::is_tail(list<SnakePart>::iterator it) {
-    return it != parts.end() && next(it) == parts.end();
+    return std::next(it) == parts.end();
 }
-
-list<SnakePart>::iterator Snake::next(list<SnakePart>::iterator it) {
-    return ++it;
-}
-

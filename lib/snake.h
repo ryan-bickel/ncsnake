@@ -13,9 +13,6 @@ private:
 
     // is this SnakePart the tail? 
     bool is_tail(list<SnakePart>::iterator part);
-
-    // get the next SnakePart towards the tail
-    list<SnakePart>::iterator next(list<SnakePart>::iterator part);
 public:
     Snake(size_t len, int y, int x, int dir);
 
