@@ -5,13 +5,15 @@
 #include "sconsts.h"
 
 void init_game() {
-    Snake snake = Snake(4, 3, 3, UP);
+    Snake* snake = new Snake(4, 3, 3, UP);
 
-    snake.draw();
+    snake->draw();
     refresh();
 
     getch();
 
-    snake.move_draw();
+    snake->move_draw();
     refresh();
+
+    delete snake;
 }

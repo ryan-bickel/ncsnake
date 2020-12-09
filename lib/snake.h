@@ -23,6 +23,16 @@ public:
 
     // move the snake in its current direction then draw it
     void move_draw();
+
+    static void operator delete(void* p) {
+        Snake* s = (Snake*) p;
+        SnakePart* curr = s->head;
+        while (curr != nullptr) {
+            SnakePart* next = curr->next;
+            delete curr;
+            curr = next;
+        }
+    }
 };
 
 #endif
