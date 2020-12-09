@@ -10,3 +10,6 @@ ncsnake: ncsnake.o
 
 ncsnake.o: ncsnake.cpp
 	$(CC) $(CFLAGS) -c ncsnake.cpp
+
+clean:
+	$(RM) ncsnake *.o
