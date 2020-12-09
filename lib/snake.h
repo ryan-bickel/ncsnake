@@ -9,10 +9,9 @@ using namespace std;
 
 class Snake {
 private:
-    list<SnakePart> parts;
-
-    // is this SnakePart the tail? 
-    bool is_tail(list<SnakePart>::iterator part);
+    SnakePart* head;
+    SnakePart* tail;
+    size_t len;
 public:
     Snake(size_t len, int y, int x, int dir);
 

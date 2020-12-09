@@ -3,29 +3,27 @@
 #include "sconsts.h"
 
 Snake::Snake(size_t len, int y, int x, int dir) {
+    head = new SnakePart(y, x, dir);
+    tail = head;
     for (unsigned i = 0; i < len; i++) {
-        parts.push_back(SnakePart(y + i, x, dir));
+        SnakePart* new_part = new SnakePart(y + i, x, dir);
+        tail->next = new_part;
+        tail = new_part;
     }
 }
 
 size_t Snake::length() {
-    return parts.size();
+    return this->len;
 }
 
 void Snake::draw() {
-    list<SnakePart>::iterator it;
-    for (it = parts.begin(); it != parts.end(); it++) {
-        mvaddch(it->y, it->x, SNAKE_CHAR);
+    for (SnakePart* curr = head; curr != nullptr; curr = curr->next) {
+        mvaddch(curr->y, curr->x, SNAKE_CHAR);
     }
 }
 
 void Snake::move_draw() {
-    list<SnakePart>::iterator it;
-    for (it = parts.begin(); it != parts.end(); it++) {
-        it->move_draw(is_tail(it));
+    for (SnakePart* curr = head; curr != nullptr; curr = curr->next) {
+        curr->move_draw(curr == tail);
     }
-}
-
-bool Snake::is_tail(list<SnakePart>::iterator it) {
-    return std::next(it) == parts.end();
 }
