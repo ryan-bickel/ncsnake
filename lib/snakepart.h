@@ -7,11 +7,12 @@ public:
     int x;
     int dir;
     SnakePart* next;
+    SnakePart* prev;
 
-    SnakePart(int y, int x, int dir) : y(y), x(x), dir(dir), next(nullptr) {};
+    SnakePart(int y, int x, int dir) : y(y), x(x), dir(dir), next(nullptr), prev(nullptr) {};
 
     // move this part then draw it and erase where it was if <erase>
-    void move_draw(bool erase);
+    void move_draw();
 };
 
 #endif

@@ -2,8 +2,8 @@
 #include "snakepart.h"
 #include "sconsts.h"
 
-void SnakePart::move_draw(bool erase = false) {
-    if (erase) mvaddch(y, x, BACKGROUND_CHAR);
+void SnakePart::move_draw() {
+    if (!next) mvaddch(y, x, BACKGROUND_CHAR);
 
     if (dir == UP) {
         y--;
@@ -15,5 +15,5 @@ void SnakePart::move_draw(bool erase = false) {
         x++;
     }
 
-    mvaddch(y, x, SNAKE_CHAR);
+    if (!prev) mvaddch(y, x, SNAKE_CHAR);
 }
