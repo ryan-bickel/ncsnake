@@ -6,4 +6,7 @@
 #define LEFT  2
 #define RIGHT 3
 
+#define SNAKE_CHAR      '#'
+#define BACKGROUND_CHAR ' '
+
 #endif

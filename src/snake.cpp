@@ -1,5 +1,6 @@
 #include <ncurses.h>
 #include "snake.h"
+#include "sconsts.h"
 
 Snake::Snake(size_t len, int y, int x, int dir) {
     for (unsigned i = 0; i < len; i++) {
@@ -14,7 +15,7 @@ size_t Snake::length() {
 void Snake::draw() {
     list<SnakePart>::iterator it;
     for (it = parts.begin(); it != parts.end(); it++) {
-        mvaddch(it->y, it->x, '#');
+        mvaddch(it->y, it->x, SNAKE_CHAR);
     }
 }
 

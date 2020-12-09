@@ -1,9 +1,9 @@
 #include <ncurses.h>
 #include "snakepart.h"
-#include "direction.h"
+#include "sconsts.h"
 
 void SnakePart::move_draw(bool erase = false) {
-    if (erase) mvaddch(y, x, ' ');
+    if (erase) mvaddch(y, x, BACKGROUND_CHAR);
 
     if (dir == UP) {
         y--;
@@ -15,5 +15,5 @@ void SnakePart::move_draw(bool erase = false) {
         x++;
     }
 
-    mvaddch(y, x, '#');
+    mvaddch(y, x, SNAKE_CHAR);
 }

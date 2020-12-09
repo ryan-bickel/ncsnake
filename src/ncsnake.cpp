@@ -2,7 +2,7 @@
 #include <ncurses.h>
 #include "ncsnake.h"
 #include "snake.h"
-#include "direction.h"
+#include "sconsts.h"
 
 void init_game() {
     Snake snake = Snake(4, 3, 3, UP);
