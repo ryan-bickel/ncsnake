@@ -29,3 +29,31 @@ void Snake::move_draw() {
         curr->move_draw();
     }
 }
+
+
+void SnakePart::move_draw() {
+    if (!next) mvaddch(y, x, BACKGROUND_CHAR);
+
+    switch (dir) {
+        case UP:
+            y--;
+            break;
+        case DOWN:
+            y++;
+            break;
+        case LEFT:
+            x--;
+            break;
+        case RIGHT:
+            x++;
+            break;
+        case FOLLOW:
+            x = prev->x;
+            y = prev->y;
+            break;
+        default:
+            break;
+    }
+
+    if (!prev) mvaddch(y, x, SNAKE_CHAR);
+}

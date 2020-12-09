@@ -3,9 +3,22 @@
 
 #include <stdlib.h>
 #include <list>
-#include "snakepart.h"
 
 using namespace std;
+
+class SnakePart {
+public:
+    int y;
+    int x;
+    int dir;
+    SnakePart* next;
+    SnakePart* prev;
+
+    SnakePart(int y, int x, int dir) : y(y), x(x), dir(dir), next(nullptr), prev(nullptr) {};
+
+    // move this part
+    void move_draw();
+};
 
 class Snake {
 private:
