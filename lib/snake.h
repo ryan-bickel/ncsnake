@@ -1,6 +1,7 @@
 #ifndef _SNAKE_H_
 #define _SNAKE_H_
 
+#include <stdlib.h>
 #include <list>
 
 using namespace std;

@@ -1,15 +1,11 @@
-CC = gcc
+CC = g++
 CFLAGS = -g -Wall
 
 LIBS = -lncurses
+INCLUDES = -I lib
 
-all: ncsnake
+SRC_DIR = src
+DEP_DIR = lib
 
-ncsnake: ncsnake.o
-	$(CC) $(CFLAGS) -o ncsnake ncsnake.o $(LIBS)
-
-ncsnake.o: ncsnake.cpp
-	$(CC) $(CFLAGS) -c ncsnake.cpp
-
-clean:
-	$(RM) ncsnake *.o
+all:
+	$(CC) $(CFLAGS) -o ncsnake $(SRC_DIR)/* $(DEP_DIR)/* $(LIBS) $(INCLUDES)

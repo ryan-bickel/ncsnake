@@ -1,7 +1,7 @@
 #include "snake.h"
 
 Snake::Snake(size_t len, int y, int x, int dir) {
-    for (int i = 0; i < len; i++) {
+    for (unsigned i = 0; i < len; i++) {
         parts.push_back(SnakePart(y - i, x, dir));
     }
 }
