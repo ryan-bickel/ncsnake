@@ -11,6 +11,7 @@ class NCSnake {
     static int score;
 public:
     static void init();
+    static void start();
 };
 
 

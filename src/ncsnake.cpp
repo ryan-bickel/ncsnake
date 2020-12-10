@@ -13,6 +13,7 @@ void NCSnake::init() {
     score_win = newwin(3, 30, 0, 0);
     wborder(score_win, 0, 0, 0, 0, 0, 0, ACS_LTEE, ACS_RTEE);
     mvwprintw(score_win, 1, 1, "SNAKE");
+
     score = 0;
     mvwprintw(score_win, 1, 20, "SCORE: %2d", score);
     wrefresh(score_win);
@@ -22,10 +23,11 @@ void NCSnake::init() {
     wborder(game_win, 0, 0, 0, 0, ACS_LTEE, ACS_RTEE, 0, 0);
     
     snake = new Snake(game_win, 10, 3, 3, RIGHT);
+}
 
+void NCSnake::start() {
     snake->draw();
     wrefresh(game_win);
-
 
     while (true) {
         int c = wgetch(game_win);

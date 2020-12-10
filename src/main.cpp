@@ -9,6 +9,7 @@ int main(int argc, char** argv) {
     curs_set(0);
 
     NCSnake::init();
+    NCSnake::start();
 
     getchar();
 
