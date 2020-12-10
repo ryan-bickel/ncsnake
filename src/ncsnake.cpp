@@ -5,6 +5,7 @@
 #include "ncsnake.h"
 #include "snake.h"
 #include "sconsts.h"
+#include "util.h"
 
 WINDOW* NCSnake::game_win;
 WINDOW* NCSnake::score_win;
@@ -71,15 +72,4 @@ void NCSnake::control_snake(int c) {
         default:
             break;
     }
-}
-
-
-int64_t time_in_ms() {
-    using namespace std;
-    return (int64_t) chrono::duration_cast<chrono::milliseconds>(chrono::system_clock().now().time_since_epoch()).count();
-}
-
-void wait_ms(int64_t ms) {
-    using namespace std;
-    this_thread::sleep_for(chrono::milliseconds(ms));
 }
