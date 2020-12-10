@@ -1,16 +1,19 @@
 #ifndef _DIRECTION_H_
 #define _DIRECTION_H_
 
-#define UP     0
-#define DOWN   1
-#define LEFT   2
-#define RIGHT  3
-#define FOLLOW 4
+#include <stdint.h>
 
-#define SNAKE_CHAR      '#'
-#define BACKGROUND_CHAR ' '
+constexpr int UP = 0;
+constexpr int DOWN = 1;
+constexpr int LEFT = 2;
+constexpr int RIGHT = 3;
+constexpr int FOLLOW = 4;
+
+constexpr char SNAKE_CHAR = '#';
+constexpr char BACKGROUND_CHAR = ' ';
+constexpr char COLLECT_CHAR = 'O';
 
 // must be >= 100 for halfdelay to work
-#define STEP_MS 100
+constexpr int64_t STEP_MS = 100;
 
 #endif
