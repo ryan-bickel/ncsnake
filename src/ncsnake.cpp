@@ -46,8 +46,6 @@ void NCSnake::step() {
 
     int64_t elapsed = time_in_ms() - start;
     if (elapsed < STEP_MS) wait_ms(STEP_MS - elapsed);
-    mvwprintw(score_win, 1, 1, "%d", c);
-    wrefresh(score_win);
 
     control_snake(c);
     snake->move_draw();
