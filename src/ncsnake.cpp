@@ -1,5 +1,7 @@
 #include <list>
 #include <ncurses.h>
+#include <chrono>
+#include <thread>
 #include "ncsnake.h"
 #include "snake.h"
 #include "sconsts.h"
@@ -30,27 +32,56 @@ void NCSnake::start() {
     wrefresh(game_win);
 
     while (true) {
-        int c = wgetch(game_win);
-        switch (c) {
-            case KEY_UP:
-                snake->set_dir(UP);
-                break;
-            case KEY_DOWN:
-                snake->set_dir(DOWN);
-                break;
-            case KEY_LEFT:
-                snake->set_dir(LEFT);
-                break;
-            case KEY_RIGHT:
-                snake->set_dir(RIGHT);
-                break;
-            default:
-                break;
-        }
-        
-        snake->move_draw();
-        wrefresh(game_win);
+        step();
     }
 
     delete snake;
+}
+
+void NCSnake::step() {
+    int64_t start = time_in_ms();
+
+    halfdelay(STEP_MS / 100);
+    int c = wgetch(game_win);
+
+    int64_t elapsed = time_in_ms() - start;
+    if (elapsed < STEP_MS) wait_ms(STEP_MS - elapsed);
+    mvwprintw(score_win, 1, 1, "%d", c);
+    wrefresh(score_win);
+
+    control_snake(c);
+    snake->move_draw();
+    wrefresh(game_win);
+
+    cbreak();
+}
+
+void NCSnake::control_snake(int c) {
+    switch (c) {
+        case KEY_UP:
+            snake->set_dir(UP);
+            break;
+        case KEY_DOWN:
+            snake->set_dir(DOWN);
+            break;
+        case KEY_LEFT:
+            snake->set_dir(LEFT);
+            break;
+        case KEY_RIGHT:
+            snake->set_dir(RIGHT);
+            break;
+        default:
+            break;
+    }
+}
+
+
+int64_t time_in_ms() {
+    using namespace std;
+    return (int64_t) chrono::duration_cast<chrono::milliseconds>(chrono::system_clock().now().time_since_epoch()).count();
+}
+
+void wait_ms(int64_t ms) {
+    using namespace std;
+    this_thread::sleep_for(chrono::milliseconds(ms));
 }

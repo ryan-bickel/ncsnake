@@ -10,4 +10,7 @@
 #define SNAKE_CHAR      '#'
 #define BACKGROUND_CHAR ' '
 
+// must be >= 100 for halfdelay to work
+#define STEP_MS 100
+
 #endif

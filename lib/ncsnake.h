@@ -9,10 +9,16 @@ class NCSnake {
     static WINDOW* score_win;
     static Snake* snake;
     static int score;
+
+    static void step();
+    static void control_snake(int c);
 public:
     static void init();
     static void start();
 };
+
+int64_t time_in_ms();
+void wait_ms(int64_t ms);
 
 
 #endif
