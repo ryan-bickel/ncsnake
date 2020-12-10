@@ -116,6 +116,7 @@ void NCSnake::gen_collect() {
     int y;
     int x;
     do {
+        srand(time_in_ms());
         y = (rand() % (y_max - 2)) + 1;
         x = (rand() % (x_max - 2)) + 1;
     } while (get_char_at(game_win, y, x) == SNAKE_CHAR);
