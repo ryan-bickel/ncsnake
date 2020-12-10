@@ -19,7 +19,7 @@ public:
     SnakePart(WINDOW* win, int y, int x, int dir) : win(win), y(y), x(x), dir(dir), next(nullptr), prev(nullptr) {};
 
     // move this part
-    void move_draw();
+    int move_draw();
 };
 
 class Snake {
@@ -38,12 +38,19 @@ public:
     void draw();
 
     // move the snake in its current direction then draw it
-    void move_draw();
+    int move_draw();
 
     // change the direction the head of the snake is moving
     void set_dir(int dir) {
         head->dir = dir;
     }
+
+    int get_dir() {
+        return head->dir;
+    }
+
+    // add a part to the snake and increase its length by 1
+    void grow();
 
     static void operator delete(void* p) {
         Snake* s = (Snake*) p;

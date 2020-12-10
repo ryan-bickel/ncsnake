@@ -10,8 +10,11 @@ class NCSnake {
     static Snake* snake;
     static int score;
 
-    static void step();
+    static int step();
     static void control_snake(int c);
+    static void update_score(bool inc = true);
+    static int handle_collision(int c);
+    static void gen_collect();
 public:
     static void init();
     static void start();

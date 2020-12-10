@@ -11,8 +11,6 @@ int main(int argc, char** argv) {
     NCSnake::init();
     NCSnake::start();
 
-    getchar();
-
     endwin();
     return 0;
 }
